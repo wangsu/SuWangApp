@@ -4,3 +4,5 @@
 *.jar
 *.war
 *.ear
+
+/war/WEB-INF/appengine-generated/
