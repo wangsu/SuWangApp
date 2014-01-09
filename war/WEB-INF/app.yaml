@@ -8,5 +8,5 @@ handlers:
 
 - url: /suwangapp
   servlet: com.wangsus.suwangapp.SuWangAppServlet
-  login: required
+  # login: required
 
