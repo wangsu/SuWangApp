@@ -3,6 +3,7 @@ package com.wangsus.suwangapp;
 import java.io.IOException;
 import javax.servlet.http.*;
 
+import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
@@ -11,21 +12,14 @@ public class SuWangAppServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		UserService userService = UserServiceFactory.getUserService();
+		User user = userService.getCurrentUser();
 
-        String thisURL = req.getRequestURI();
-
-        resp.setContentType("text/html");
-        if (req.getUserPrincipal() != null) {
-            resp.getWriter().println("<p>Hello, " +
-                                     req.getUserPrincipal().getName() +
-                                     "!  You can <a href=\"" +
-                                     userService.createLogoutURL(thisURL) +
-                                     "\">sign out</a>.</p>");
-        } else {
-            resp.getWriter().println("<p>Please <a href=\"" +
-                                     userService.createLoginURL(thisURL) +
-                                     "\">sign in</a>.</p>");
-        }
+		if (user != null) {
+			resp.setContentType("text/plain");
+			resp.getWriter().println("Hello, " + user.getNickname());
+		} else {
+			resp.sendRedirect(userService.createLoginURL(req.getRequestURI()));
+		}
 
 	}
 }
