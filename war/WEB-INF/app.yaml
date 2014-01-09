@@ -1,0 +1,12 @@
+application: suwangapp
+version: 1
+runtime: java
+
+threadsafe: true
+
+handlers:
+
+- url: /suwangapp
+  servlet: com.wangsus.suwangapp.SuWangAppServlet
+  login: required
+
