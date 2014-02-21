@@ -20,6 +20,5 @@ public class SuWangAppServlet extends HttpServlet {
 		} else {
 			resp.sendRedirect(userService.createLoginURL(req.getRequestURI()));
 		}
-
 	}
 }

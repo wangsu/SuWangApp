@@ -10,3 +10,5 @@ handlers:
   servlet: com.wangsus.suwangapp.SuWangAppServlet
   # login: required
 
+welcome_files:
+  - suwangapp
