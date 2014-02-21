@@ -18,8 +18,9 @@ public class SuWangAppServlet extends HttpServlet {
 
 		if (user != null) {
 //			resp.setContentType("text/plain");
-//			resp.getWriter().println("Hello, " + user.getNickname());
+//			resp.getWriter().println("Hello, " + user.getNickname());			
 			req.setAttribute("name", user.getNickname());
+			req.setAttribute("logouturl", userService.createLogoutURL("/"));
 			req.getRequestDispatcher("/WEB-INF/jsp/test.jsp").forward(req, resp);			
 		} else {
 			resp.sendRedirect(userService.createLoginURL(req.getRequestURI()));
